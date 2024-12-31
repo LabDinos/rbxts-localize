@@ -63,13 +63,13 @@ export function getLookupKeyName(
     key: string;
     fallback: string;
 } {
-    const ordinal = variables[SPECIAL_VARIABLES.ORDINAL];
+    const ordinal = variables[SPECIAL_VARIABLES.ORDINAL] ?? false;
     const count = variables[SPECIAL_VARIABLES.PLURALIZATION];
 
     const keyBase = key + (ordinal ? KEY_LOOKUP_OPTIONS.ORDINAL : '');
 
     if (count !== undefined) {
-        const plural = (ordinal ? PLURALIZATION_FUNCTIONS_CARDINAL : PLURALIZATION_FUNCTIONS_ORDINAL)[language](count);
+        const plural = (ordinal ? PLURALIZATION_FUNCTIONS_ORDINAL : PLURALIZATION_FUNCTIONS_CARDINAL)[language](count);
 
         return {
             key: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[plural],
