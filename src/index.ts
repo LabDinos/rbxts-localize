@@ -13,5 +13,7 @@ export {
     InterpolationVariablePart,
     parseInterpolatable,
     ROBLOX_LANGUAGE_CODE_MAP,
-    LANGUAGE_CODE_ROBLOX_MAP
+    LANGUAGE_CODE_ROBLOX_MAP,
+    Localizer,
+    LocalizerTableDependency
 };
