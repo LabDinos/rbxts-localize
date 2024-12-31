@@ -45,7 +45,7 @@ export interface SpecialLookupVariables {
 /**
  * Lookup variables.
  */
-export type LookupVariables = Record<string, string | number> & SpecialLookupVariables;
+export type LookupVariables = Record<string, string | number | boolean> & SpecialLookupVariables;
 
 /**
  * Lookup a translation key.
