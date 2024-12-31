@@ -10,6 +10,11 @@
         "localization",
         "i18n"
     ],
+    "homepage": "https://github.com/LabDinos/rbxts-localize",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/LabDinos/rbxts-localize"
+    },
     "main": "out/init.lua",
     "scripts": {
         "build": "rbxtsc",
