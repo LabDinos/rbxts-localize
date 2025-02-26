@@ -50,21 +50,21 @@ export const enum LanguageCode {
 }
 
 export const ROBLOX_LANGUAGE_CODE_MAP: Record<string, LanguageCode> = {
-    pt_br: LanguageCode.pt_BR,
-    th_th: LanguageCode.th_TH,
-    de_de: LanguageCode.de_DE,
-    ko_kr: LanguageCode.ko_KR,
-    vi_vn: LanguageCode.vi_VN,
-    ja_jp: LanguageCode.ja_JP,
-    tr_tr: LanguageCode.tr_TR,
-    it_it: LanguageCode.it_IT,
-    pl_pl: LanguageCode.pl_PL,
-    fr_fr: LanguageCode.fr_FR,
-    id_id: LanguageCode.id_ID,
-    en_us: LanguageCode.en_US,
-    zh_tw: LanguageCode.zh_TW,
-    es_es: LanguageCode.es_ES,
-    zh_cn: LanguageCode.zh_CN
+    'pt-br': LanguageCode.pt_BR,
+    'th-th': LanguageCode.th_TH,
+    'de-de': LanguageCode.de_DE,
+    'ko-kr': LanguageCode.ko_KR,
+    'vi-vn': LanguageCode.vi_VN,
+    'ja-jp': LanguageCode.ja_JP,
+    'tr-tr': LanguageCode.tr_TR,
+    'it-it': LanguageCode.it_IT,
+    'pl-pl': LanguageCode.pl_PL,
+    'fr-fr': LanguageCode.fr_FR,
+    'id-id': LanguageCode.id_ID,
+    'en-us': LanguageCode.en_US,
+    'zh-tw': LanguageCode.zh_TW,
+    'es-es': LanguageCode.es_ES,
+    'zh-cn': LanguageCode.zh_CN
 };
 
 export const LANGUAGE_CODE_ROBLOX_MAP: Record<LanguageCode, string> = {
