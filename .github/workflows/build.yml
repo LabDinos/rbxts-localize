@@ -1,18 +1,19 @@
-name: Publish @rbxts/localize
+name: Build
 
 on:
     workflow_dispatch: null
-    push:
-        tags:
-            - "*"
+    pull_request: null
+
+concurrency:
+    group: '${{ github.workflow }}-${{ github.ref }}'
+    cancel-in-progress: true
 
 permissions:
     contents: read
-    id-token: write
 
 jobs:
-    publish:
-        name: Publish
+    build:
+        name: Build
         runs-on: ubuntu-latest
         steps:
           - name: Checkout Repository
@@ -27,8 +28,8 @@ jobs:
             with:
                 cache: pnpm
                 node-version: 24
-                registry-url: https://registry.npmjs.org/
+                registry-url: 'https://registry.npmjs.org/'
           - name: Install Dependencies
             run: pnpm install --frozen-lockfile
-          - name: Publish
-            run: pnpm publish --access public --provenance --no-git-checks
+          - name: Build
+            run: pnpm build
