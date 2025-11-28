@@ -18,6 +18,7 @@
 - Turkish
 - Vietnamese
 - Chinese (Simplified)
+- Chinese (Traditional)
 
 ## Plurals
 

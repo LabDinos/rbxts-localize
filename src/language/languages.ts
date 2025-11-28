@@ -62,9 +62,11 @@ export const ROBLOX_LANGUAGE_CODE_MAP: Record<string, LanguageCode> = {
     'fr-fr': LanguageCode.fr_FR,
     'id-id': LanguageCode.id_ID,
     'en-us': LanguageCode.en_US,
-    'zh-tw': LanguageCode.zh_TW,
     'es-es': LanguageCode.es_ES,
-    'zh-cn': LanguageCode.zh_CN
+    'zh-cn': LanguageCode.zh_CN,
+    'zh-hans': LanguageCode.zh_CN,
+    'zh-tw': LanguageCode.zh_TW,
+    'zh-hant': LanguageCode.zh_TW
 };
 
 export const LANGUAGE_CODE_ROBLOX_MAP: Record<LanguageCode, string> = {
@@ -80,7 +82,7 @@ export const LANGUAGE_CODE_ROBLOX_MAP: Record<LanguageCode, string> = {
     [LanguageCode.fr_FR]: 'fr-fr',
     [LanguageCode.id_ID]: 'id-id',
     [LanguageCode.en_US]: 'en-us',
-    [LanguageCode.zh_TW]: 'zh-tw',
     [LanguageCode.es_ES]: 'es-es',
-    [LanguageCode.zh_CN]: 'zh-cn'
+    [LanguageCode.zh_CN]: 'zh-cn',
+    [LanguageCode.zh_TW]: 'zh-tw'
 };
