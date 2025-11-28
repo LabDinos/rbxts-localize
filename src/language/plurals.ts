@@ -118,7 +118,7 @@ export const PLURALIZATION_FUNCTIONS_CARDINAL: PluralizationFunctionCardinal = {
             return PluralOption.Many;
         return PluralOption.Other;
     },
-    [LanguageCode.id_ID]: (value: number) => PluralOption.Other,
+    [LanguageCode.id_ID]: (_value: number) => PluralOption.Other,
     [LanguageCode.it_IT]: (value: number) => {
         if (value === 1) return PluralOption.One;
         // Compact decimal exponent value
@@ -134,8 +134,8 @@ export const PLURALIZATION_FUNCTIONS_CARDINAL: PluralizationFunctionCardinal = {
             return PluralOption.Many;
         return PluralOption.Other;
     },
-    [LanguageCode.ja_JP]: (value: number) => PluralOption.Other,
-    [LanguageCode.ko_KR]: (value: number) => PluralOption.Other,
+    [LanguageCode.ja_JP]: (_value: number) => PluralOption.Other,
+    [LanguageCode.ko_KR]: (_value: number) => PluralOption.Other,
     [LanguageCode.pl_PL]: (value: number) => {
         if (value === 1) return PluralOption.One;
         const hasDecimal = value % 1 !== 0;
@@ -165,11 +165,11 @@ export const PLURALIZATION_FUNCTIONS_CARDINAL: PluralizationFunctionCardinal = {
             return PluralOption.Many;
         return PluralOption.Other;
     },
-    [LanguageCode.th_TH]: (value: number) => PluralOption.Other,
+    [LanguageCode.th_TH]: (_value: number) => PluralOption.Other,
     [LanguageCode.tr_TR]: (value: number) => (value === 1 ? PluralOption.One : PluralOption.Other),
-    [LanguageCode.vi_VN]: (value: number) => PluralOption.Other,
-    [LanguageCode.zh_CN]: (value: number) => PluralOption.Other,
-    [LanguageCode.zh_TW]: (value: number) => PluralOption.Other
+    [LanguageCode.vi_VN]: (_value: number) => PluralOption.Other,
+    [LanguageCode.zh_CN]: (_value: number) => PluralOption.Other,
+    [LanguageCode.zh_TW]: (_value: number) => PluralOption.Other
 };
 
 type PluralizationFunctionOrdinal = Record<LanguageCode, unknown> & {
@@ -181,30 +181,30 @@ type PluralizationFunctionOrdinal = Record<LanguageCode, unknown> & {
  * The ordinal pluralization functions for a given language.
  */
 export const PLURALIZATION_FUNCTIONS_ORDINAL: PluralizationFunctionOrdinal = {
-    [LanguageCode.de_DE]: (value: number) => PluralOption.Other,
+    [LanguageCode.de_DE]: (_value: number) => PluralOption.Other,
     [LanguageCode.en_US]: (value: number) => {
         if (value % 10 === 1 && value % 100 !== 11) return PluralOption.One;
         if (value % 10 === 2 && value % 100 !== 12) return PluralOption.Two;
         if (value % 10 === 3 && value % 100 !== 13) return PluralOption.Few;
         return PluralOption.Other;
     },
-    [LanguageCode.es_ES]: (value: number) => PluralOption.Other,
+    [LanguageCode.es_ES]: (_value: number) => PluralOption.Other,
     [LanguageCode.fr_FR]: (value: number) => {
         if (value === 1) return PluralOption.One;
         return PluralOption.Other;
     },
-    [LanguageCode.id_ID]: (value: number) => PluralOption.Other,
+    [LanguageCode.id_ID]: (_value: number) => PluralOption.Other,
     [LanguageCode.it_IT]: (value: number) => {
         if (value === 8 || value === 11 || value === 80 || value === 81 || value === 100) return PluralOption.Many;
         return PluralOption.Other;
     },
-    [LanguageCode.ja_JP]: (value: number) => PluralOption.Other,
-    [LanguageCode.ko_KR]: (value: number) => PluralOption.Other,
-    [LanguageCode.pl_PL]: (value: number) => PluralOption.Other,
-    [LanguageCode.pt_BR]: (value: number) => PluralOption.Other,
-    [LanguageCode.th_TH]: (value: number) => PluralOption.Other,
-    [LanguageCode.tr_TR]: (value: number) => PluralOption.Other,
+    [LanguageCode.ja_JP]: (_value: number) => PluralOption.Other,
+    [LanguageCode.ko_KR]: (_value: number) => PluralOption.Other,
+    [LanguageCode.pl_PL]: (_value: number) => PluralOption.Other,
+    [LanguageCode.pt_BR]: (_value: number) => PluralOption.Other,
+    [LanguageCode.th_TH]: (_value: number) => PluralOption.Other,
+    [LanguageCode.tr_TR]: (_value: number) => PluralOption.Other,
     [LanguageCode.vi_VN]: (value: number) => (value === 1 ? PluralOption.One : PluralOption.Other),
-    [LanguageCode.zh_CN]: (value: number) => PluralOption.Other,
-    [LanguageCode.zh_TW]: (value: number) => PluralOption.Other
+    [LanguageCode.zh_CN]: (_value: number) => PluralOption.Other,
+    [LanguageCode.zh_TW]: (_value: number) => PluralOption.Other
 };
