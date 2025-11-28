@@ -15,7 +15,7 @@ const KEY_LOOKUP_OPTIONS = {
         [PluralOption.Two]: ':two',
         [PluralOption.Few]: ':few',
         [PluralOption.Many]: ':many',
-        [PluralOption.Other]: ''
+        [PluralOption.Other]: ':other'
     },
     ORDINAL: ':ordinal'
 } as const;

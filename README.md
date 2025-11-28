@@ -23,13 +23,13 @@
 ## Plurals
 
 The main idea of `@rbxts/localize` is to provide a simple way to localize your experience without
-having to worry about the complexity of pluralization rules. Simpily use the `$count` token in your
+having to worry about the complexity of pluralization rules. Simply use the `$count` token in your
 strings and `@rbxts/localize` will handle the rest.
 
 Localization file:
 ```csv
-key,en,zh_cn
-apples,You have {{$count}} apples,你有{{$count}}个苹果
+key,en_US,zh_CN
+apples:other,You have {{$count}} apples,你有{{$count}}个苹果
 apples:one,You have {{$count}} apple,
 ```
 
@@ -48,8 +48,8 @@ localization file or it will not work.
 
 Localization file:
 ```csv
-key,en,zh_cn
-place:ordinal,You are in {{$count}}th place,你在第{{$count}}名
+key,en_US,zh_CN
+place:ordinal:other,You are in {{$count}}th place,你在第{{$count}}名
 place:ordinal:one,You are in {{$count}}st place,
 place:ordinal:two,You are in {{$count}}nd place,
 place:ordinal:few,You are in {{$count}}rd place,
