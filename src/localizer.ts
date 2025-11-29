@@ -5,48 +5,50 @@ import { LanguageCode } from './language';
 /**
  * Implement your own localizer table dependency.
  */
-export abstract class LocalizerTableDependency {
-    abstract setLanguage(language: LanguageCode): void;
-    abstract getLanguage(): LanguageCode;
-    abstract getKey(key: string): string | undefined;
+export interface LocalizationProvider {
+    setLanguage(language: LanguageCode): void;
+    getLanguage(): LanguageCode;
+    getKey(key: string): string | undefined;
 }
 
 /**
  * A localizer.
  */
-export class Localizer<Table extends LocalizerTableDependency> {
-    private table: Table;
+export class Localizer<Provider extends LocalizationProvider> {
+    private provider: Provider;
     public languageChangedSignal: BindableEvent<(language: LanguageCode) => void>;
 
     /**
      * Create a new localizer.
+     *
+     * @param provider The translation provider.
      */
-    public constructor(translationTable: Table) {
-        this.table = translationTable;
+    public constructor(provider: Provider) {
+        this.provider = provider;
         this.languageChangedSignal = new Instance('BindableEvent');
     }
 
     /**
-     * Set the language.
+     * Change the current language.
      *
      * @param language The language.
      */
     public setLanguage(language: LanguageCode): void {
-        this.table.setLanguage(language);
+        this.provider.setLanguage(language);
         this.languageChangedSignal.Fire(language);
     }
 
     /**
-     * Get the language.
+     * Get the current language.
      *
      * @returns The language.
      */
     public getLanguage(): LanguageCode {
-        return this.table.getLanguage();
+        return this.provider.getLanguage();
     }
 
     /**
-     * Get a key given a key and arguments.
+     * Retrieve a localized string for a given key with arguments.
      *
      * @param key The key.
      * @param args The arguments.
@@ -63,7 +65,7 @@ export class Localizer<Table extends LocalizerTableDependency> {
     }
 
     /**
-     * Interpolate a string.
+     * Interpolate a string with variables.
      *
      * @param interpolatable The interpolatable.
      * @param variables The variables.
@@ -79,9 +81,7 @@ export class Localizer<Table extends LocalizerTableDependency> {
             } else {
                 const value = variables[part.variable];
 
-                if (value !== undefined) {
-                    result += value;
-                }
+                result += value !== undefined ? value : '(nil)';
             }
         }
 
@@ -89,22 +89,22 @@ export class Localizer<Table extends LocalizerTableDependency> {
     }
 
     /**
-     * Get a key.
+     * Get a key from the provider given a key and arguments.
      *
-     * @param key The key
-     * @param args The arguments.
+     * @param key The key.
+     * @param args The loookup variables.
      * @returns The key.
      */
     public getKey(key: string, args: LookupVariables): string | undefined {
         const { key: lookupKey, fallback } = this.getLookupKeyName(key, args);
-        return this.table.getKey(lookupKey) ?? this.table.getKey(fallback);
+        return this.provider.getKey(lookupKey) ?? this.provider.getKey(fallback);
     }
 
     /**
-     * Localize a key.
+     * Localize a key with arguments.
      *
      * @param key The key.
-     * @param args The arguments.
+     * @param args The lookup variables.
      * @returns The localized key.
      */
     public localize(key: string, args: LookupVariables = {}): string {

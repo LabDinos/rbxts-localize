@@ -1,7 +1,7 @@
 import { LanguageCode, PLURALIZATION_RULES, ROBLOX_LANGUAGE_CODE_MAP, LANGUAGE_CODE_ROBLOX_MAP } from './language';
 import { LookupVariables, SpecialLookupVariables, getLookupKeyName } from './keys';
 import { InterpolationStringPart, InterpolationVariablePart, parseInterpolatable } from './interpolation';
-import { Localizer, LocalizerTableDependency } from './localizer';
+import { Localizer, LocalizationProvider } from './localizer';
 
 export {
     LanguageCode,
@@ -15,5 +15,5 @@ export {
     ROBLOX_LANGUAGE_CODE_MAP,
     LANGUAGE_CODE_ROBLOX_MAP,
     Localizer,
-    LocalizerTableDependency
+    LocalizationProvider
 };
