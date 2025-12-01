@@ -32,6 +32,9 @@ export const enum LanguageCode {
     /// Portuguese (Brazil)
     /// Português (Brasil)
     pt_BR = 'pt_BR',
+    /// Russian (Russia)
+    /// Русский (Россия)
+    ru_RU = 'ru_RU',
     /// Thai (Thailand)
     /// ไทย (ประเทศไทย)
     th_TH = 'th_TH',
@@ -50,39 +53,41 @@ export const enum LanguageCode {
 }
 
 export const ROBLOX_LANGUAGE_CODE_MAP: Record<string, LanguageCode> = {
-    'pt-br': LanguageCode.pt_BR,
-    'th-th': LanguageCode.th_TH,
     'de-de': LanguageCode.de_DE,
-    'ko-kr': LanguageCode.ko_KR,
-    'vi-vn': LanguageCode.vi_VN,
-    'ja-jp': LanguageCode.ja_JP,
-    'tr-tr': LanguageCode.tr_TR,
-    'it-it': LanguageCode.it_IT,
-    'pl-pl': LanguageCode.pl_PL,
-    'fr-fr': LanguageCode.fr_FR,
-    'id-id': LanguageCode.id_ID,
     'en-us': LanguageCode.en_US,
     'es-es': LanguageCode.es_ES,
+    'fr-fr': LanguageCode.fr_FR,
+    'id-id': LanguageCode.id_ID,
+    'it-it': LanguageCode.it_IT,
+    'ja-jp': LanguageCode.ja_JP,
+    'ko-kr': LanguageCode.ko_KR,
+    'pl-pl': LanguageCode.pl_PL,
+    'pt-br': LanguageCode.pt_BR,
+    'ru-ru': LanguageCode.ru_RU,
+    'th-th': LanguageCode.th_TH,
+    'tr-tr': LanguageCode.tr_TR,
+    'vi-vn': LanguageCode.vi_VN,
     'zh-cn': LanguageCode.zh_CN,
     'zh-hans': LanguageCode.zh_CN,
-    'zh-tw': LanguageCode.zh_TW,
-    'zh-hant': LanguageCode.zh_TW
+    'zh-hant': LanguageCode.zh_TW,
+    'zh-tw': LanguageCode.zh_TW
 };
 
 export const LANGUAGE_CODE_ROBLOX_MAP: Record<LanguageCode, string> = {
-    [LanguageCode.pt_BR]: 'pt-br',
-    [LanguageCode.th_TH]: 'th-th',
     [LanguageCode.de_DE]: 'de-de',
-    [LanguageCode.ko_KR]: 'ko-kr',
-    [LanguageCode.vi_VN]: 'vi-vn',
-    [LanguageCode.ja_JP]: 'ja-jp',
-    [LanguageCode.tr_TR]: 'tr-tr',
-    [LanguageCode.it_IT]: 'it-it',
-    [LanguageCode.pl_PL]: 'pl-pl',
-    [LanguageCode.fr_FR]: 'fr-fr',
-    [LanguageCode.id_ID]: 'id-id',
     [LanguageCode.en_US]: 'en-us',
     [LanguageCode.es_ES]: 'es-es',
+    [LanguageCode.fr_FR]: 'fr-fr',
+    [LanguageCode.id_ID]: 'id-id',
+    [LanguageCode.it_IT]: 'it-it',
+    [LanguageCode.ja_JP]: 'ja-jp',
+    [LanguageCode.ko_KR]: 'ko-kr',
+    [LanguageCode.pl_PL]: 'pl-pl',
+    [LanguageCode.pt_BR]: 'pt-br',
+    [LanguageCode.ru_RU]: 'ru-ru',
+    [LanguageCode.th_TH]: 'th-th',
+    [LanguageCode.tr_TR]: 'tr-tr',
+    [LanguageCode.vi_VN]: 'vi-vn',
     [LanguageCode.zh_CN]: 'zh-cn',
     [LanguageCode.zh_TW]: 'zh-tw'
 };

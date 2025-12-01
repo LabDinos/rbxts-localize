@@ -68,6 +68,7 @@ console.log(localizer.localize('apples', { $count: 2 })); // You have 2 apples
 - Korean
 - Polish
 - Portuguese (Brazil)
+- Russian
 - Thai
 - Turkish
 - Vietnamese
