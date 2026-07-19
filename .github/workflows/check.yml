@@ -1,4 +1,4 @@
-name: Lint
+name: Check
 
 on:
     workflow_dispatch: null
@@ -12,8 +12,8 @@ permissions:
     contents: read
 
 jobs:
-    lint:
-        name: Lint
+    check:
+        name: Check
         runs-on: ubuntu-latest
         steps:
           - name: Checkout Repository
@@ -30,5 +30,7 @@ jobs:
                 registry-url: 'https://registry.npmjs.org/'
           - name: Install Dependencies
             run: pnpm install --frozen-lockfile
+          - name: Build
+            run: pnpm build
           - name: Lint
             run: pnpm lint
