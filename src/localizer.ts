@@ -1,6 +1,6 @@
-import { parseInterpolatable } from './interpolation';
-import { getLookupKeyName, LookupVariables } from './keys';
-import { LanguageCode } from './language';
+import { parseInterpolatable } from "./interpolation";
+import { getLookupKeyName, type LookupVariables } from "./keys";
+import type { LanguageCode } from "./language";
 
 /**
  * Implement your own localizer table dependency.
@@ -16,7 +16,9 @@ export interface LocalizationProvider {
  */
 export class Localizer<Provider extends LocalizationProvider> {
     private provider: Provider;
-    public languageChangedSignal: BindableEvent<(language: LanguageCode) => void>;
+    public languageChangedSignal: BindableEvent<
+        (language: LanguageCode) => void
+    >;
 
     /**
      * Create a new localizer.
@@ -25,7 +27,7 @@ export class Localizer<Provider extends LocalizationProvider> {
      */
     public constructor(provider: Provider) {
         this.provider = provider;
-        this.languageChangedSignal = new Instance('BindableEvent');
+        this.languageChangedSignal = new Instance("BindableEvent");
     }
 
     /**
@@ -56,7 +58,7 @@ export class Localizer<Provider extends LocalizationProvider> {
      */
     public getLookupKeyName(
         key: string,
-        args: LookupVariables
+        args: LookupVariables,
     ): {
         key: string;
         fallback: string;
@@ -70,18 +72,21 @@ export class Localizer<Provider extends LocalizationProvider> {
      * @param interpolatable The interpolatable.
      * @param variables The variables.
      */
-    public interpolate(interpolatable: string, variables: LookupVariables): string {
+    public interpolate(
+        interpolatable: string,
+        variables: LookupVariables,
+    ): string {
         const parts = parseInterpolatable(interpolatable);
 
-        let result = '';
+        let result = "";
 
         for (const part of parts) {
-            if (part.type === 'string') {
+            if (part.type === "string") {
                 result += part.value;
             } else {
                 const value = variables[part.variable];
 
-                result += value !== undefined ? value : '(nil)';
+                result += value !== undefined ? value : "(nil)";
             }
         }
 
@@ -97,7 +102,9 @@ export class Localizer<Provider extends LocalizationProvider> {
      */
     public getKey(key: string, args: LookupVariables): string | undefined {
         const { key: lookupKey, fallback } = this.getLookupKeyName(key, args);
-        return this.provider.getKey(lookupKey) ?? this.provider.getKey(fallback);
+        return (
+            this.provider.getKey(lookupKey) ?? this.provider.getKey(fallback)
+        );
     }
 
     /**

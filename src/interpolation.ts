@@ -2,7 +2,7 @@
  * A part of an interpolation that is a string.
  */
 export interface InterpolationStringPart {
-    type: 'string';
+    type: "string";
     value: string;
 }
 
@@ -10,7 +10,7 @@ export interface InterpolationStringPart {
  * A part of an interpolation that needs to be replaced with a variable.
  */
 export interface InterpolationVariablePart {
-    type: 'variable';
+    type: "variable";
     variable: string;
 }
 
@@ -19,9 +19,9 @@ export interface InterpolationVariablePart {
  * Note: ESCAPE_CODE must be a single character.
  */
 const PARSER_OPTIONS = {
-    ESCAPE_CODE: '\\',
-    EXPRESSION_START: '{{',
-    EXPRESSION_END: '}}'
+    ESCAPE_CODE: "\\",
+    EXPRESSION_START: "{{",
+    EXPRESSION_END: "}}",
 } as const;
 
 /**
@@ -44,7 +44,10 @@ function charAt(str: string, index: number): string {
  * @returns The substring.
  */
 function subString(str: string, startIndex: number, endIndex?: number): string {
-    return str.sub(startIndex + 1, endIndex === undefined ? str.size() : endIndex + 1);
+    return str.sub(
+        startIndex + 1,
+        endIndex === undefined ? str.size() : endIndex + 1,
+    );
 }
 
 /**
@@ -54,14 +57,15 @@ function subString(str: string, startIndex: number, endIndex?: number): string {
  * @returns The parsed key.
  */
 export function parseInterpolatable(
-    interpolatable: string
+    interpolatable: string,
 ): Array<InterpolationStringPart | InterpolationVariablePart> {
-    const sections: Array<InterpolationStringPart | InterpolationVariablePart> = [];
+    const sections: Array<InterpolationStringPart | InterpolationVariablePart> =
+        [];
 
     let expressionMatch = 0;
     let inExpression = false;
     let escaped = false;
-    let current = '';
+    let current = "";
 
     for (let i = 0; i < interpolatable.size(); i++) {
         const char = charAt(interpolatable, i);
@@ -79,33 +83,54 @@ export function parseInterpolatable(
         }
 
         if (inExpression) {
-            if (char === charAt(PARSER_OPTIONS.EXPRESSION_END, expressionMatch)) {
+            if (
+                char === charAt(PARSER_OPTIONS.EXPRESSION_END, expressionMatch)
+            ) {
                 expressionMatch++;
                 if (expressionMatch === PARSER_OPTIONS.EXPRESSION_END.size()) {
                     expressionMatch = 0;
                     inExpression = false;
                     sections.push({
-                        type: 'variable',
-                        variable: subString(current, 0, current.size() - PARSER_OPTIONS.EXPRESSION_END.size())
+                        type: "variable",
+                        variable: subString(
+                            current,
+                            0,
+                            current.size() -
+                                PARSER_OPTIONS.EXPRESSION_END.size(),
+                        ),
                     });
-                    current = '';
+                    current = "";
                     continue;
                 }
             } else {
                 expressionMatch = 0;
             }
         } else {
-            if (char === charAt(PARSER_OPTIONS.EXPRESSION_START, expressionMatch)) {
+            if (
+                char ===
+                charAt(PARSER_OPTIONS.EXPRESSION_START, expressionMatch)
+            ) {
                 expressionMatch++;
-                if (expressionMatch === PARSER_OPTIONS.EXPRESSION_START.size()) {
+                if (
+                    expressionMatch === PARSER_OPTIONS.EXPRESSION_START.size()
+                ) {
                     expressionMatch = 0;
                     inExpression = true;
-                    if (current.size() - PARSER_OPTIONS.EXPRESSION_START.size() > 0)
+                    if (
+                        current.size() -
+                            PARSER_OPTIONS.EXPRESSION_START.size() >
+                        0
+                    )
                         sections.push({
-                            type: 'string',
-                            value: subString(current, 0, current.size() - PARSER_OPTIONS.EXPRESSION_START.size())
+                            type: "string",
+                            value: subString(
+                                current,
+                                0,
+                                current.size() -
+                                    PARSER_OPTIONS.EXPRESSION_START.size(),
+                            ),
                         });
-                    current = '';
+                    current = "";
                     continue;
                 }
             } else {
@@ -116,9 +141,9 @@ export function parseInterpolatable(
         current += char;
     }
 
-    let lastSection: InterpolationStringPart = { type: 'string', value: '' };
+    let lastSection: InterpolationStringPart = { type: "string", value: "" };
     const actualLastSection = sections[sections.size() - 1];
-    if (actualLastSection && actualLastSection.type === 'string') {
+    if (actualLastSection && actualLastSection.type === "string") {
         lastSection = actualLastSection;
     } else {
         sections.push(lastSection);

@@ -1,31 +1,31 @@
 import {
-    LanguageCode,
-    PluralOption,
+    type LanguageCode,
+    PLURALIZATION_FUNCTIONS_CARDINAL,
     PLURALIZATION_FUNCTIONS_ORDINAL,
-    PLURALIZATION_FUNCTIONS_CARDINAL
-} from './language';
+    PluralOption,
+} from "./language";
 
 /**
  * Lookup options.
  */
 const KEY_LOOKUP_OPTIONS = {
     PLURALS: {
-        [PluralOption.Zero]: ':zero',
-        [PluralOption.One]: ':one',
-        [PluralOption.Two]: ':two',
-        [PluralOption.Few]: ':few',
-        [PluralOption.Many]: ':many',
-        [PluralOption.Other]: ':other'
+        [PluralOption.Zero]: ":zero",
+        [PluralOption.One]: ":one",
+        [PluralOption.Two]: ":two",
+        [PluralOption.Few]: ":few",
+        [PluralOption.Many]: ":many",
+        [PluralOption.Other]: ":other",
     },
-    ORDINAL: ':ordinal'
+    ORDINAL: ":ordinal",
 } as const;
 
 /**
  * Special variable names.
  */
 const SPECIAL_VARIABLES = {
-    PLURALIZATION: '$count',
-    ORDINAL: '$ordinal'
+    PLURALIZATION: "$count",
+    ORDINAL: "$ordinal",
 } as const;
 
 /**
@@ -45,7 +45,8 @@ export interface SpecialLookupVariables {
 /**
  * Lookup variables.
  */
-export type LookupVariables = Record<string, string | number | boolean> & SpecialLookupVariables;
+export type LookupVariables = Record<string, string | number | boolean> &
+    SpecialLookupVariables;
 
 /**
  * Lookup a translation key.
@@ -58,7 +59,7 @@ export type LookupVariables = Record<string, string | number | boolean> & Specia
 export function getLookupKeyName(
     language: LanguageCode,
     key: string,
-    variables: LookupVariables
+    variables: LookupVariables,
 ): {
     key: string;
     fallback: string;
@@ -66,19 +67,23 @@ export function getLookupKeyName(
     const ordinal = variables[SPECIAL_VARIABLES.ORDINAL] ?? false;
     const count = variables[SPECIAL_VARIABLES.PLURALIZATION];
 
-    const keyBase = key + (ordinal ? KEY_LOOKUP_OPTIONS.ORDINAL : '');
+    const keyBase = key + (ordinal ? KEY_LOOKUP_OPTIONS.ORDINAL : "");
 
     if (count !== undefined) {
-        const plural = (ordinal ? PLURALIZATION_FUNCTIONS_ORDINAL : PLURALIZATION_FUNCTIONS_CARDINAL)[language](count);
+        const plural = (
+            ordinal
+                ? PLURALIZATION_FUNCTIONS_ORDINAL
+                : PLURALIZATION_FUNCTIONS_CARDINAL
+        )[language](count);
 
         return {
             key: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[plural],
-            fallback: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[PluralOption.Other]
+            fallback: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[PluralOption.Other],
         };
     }
 
     return {
         key: keyBase,
-        fallback: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[PluralOption.Other]
+        fallback: keyBase + KEY_LOOKUP_OPTIONS.PLURALS[PluralOption.Other],
     };
 }
