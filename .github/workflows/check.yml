@@ -30,7 +30,5 @@ jobs:
                 registry-url: 'https://registry.npmjs.org/'
           - name: Install Dependencies
             run: pnpm install --frozen-lockfile
-          - name: Build
-            run: pnpm build
-          - name: Lint
-            run: pnpm lint
+          - name: Check (Biome)
+            run: pnpm check
