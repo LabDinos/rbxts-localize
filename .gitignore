@@ -1,4 +1,10 @@
+# Packages
 /node_modules
-/out
+
+# Build output
 /include
+/out
 *.tsbuildinfo
+
+# macOS
+.DS_Store
