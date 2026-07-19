@@ -30,4 +30,4 @@ jobs:
           - name: Install Dependencies
             run: pnpm install --frozen-lockfile
           - name: Publish
-            run: pnpm publish --access public --provenance --no-git-checks
+            run: pnpm publish --access public --provenance
