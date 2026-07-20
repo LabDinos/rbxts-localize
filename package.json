@@ -1,19 +1,34 @@
 {
     "name": "@rbxts/localize",
     "version": "1.0.1",
-    "description": "Roblox localization framework.",
+    "description": "Internationalization (i18n) and localization with automatic pluralization for Luau and TS. An i18next-style translation library for Roblox games.",
     "author": "LabDinos",
     "keywords": [
         "roblox",
         "roblox-ts",
+        "rbxts",
         "typescript",
+        "lua",
+        "luau",
         "localization",
-        "i18n"
+        "l10n",
+        "i18n",
+        "internationalization",
+        "translation",
+        "translate",
+        "pluralization",
+        "plurals",
+        "locale",
+        "intl",
+        "i18next"
     ],
-    "homepage": "https://github.com/LabDinos/rbxts-localize",
+    "homepage": "https://github.com/LabDinos/localize",
     "repository": {
         "type": "git",
-        "url": "https://github.com/LabDinos/rbxts-localize"
+        "url": "https://github.com/LabDinos/localize"
+    },
+    "bugs": {
+        "url": "https://github.com/LabDinos/localize/issues"
     },
     "main": "out/init.lua",
     "scripts": {
