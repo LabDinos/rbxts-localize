@@ -1,6 +1,16 @@
-# `@rbxts/localize`
+# `localize`
 
-`@rbxts/localize` is a library for localizing Roblox games with an approach similar to i18next.
+[![npm version](https://img.shields.io/npm/v/@rbxts/localize)](https://www.npmjs.com/package/@rbxts/localize)
+[![npm downloads](https://img.shields.io/npm/dm/@rbxts/localize)](https://www.npmjs.com/package/@rbxts/localize)
+[![license](https://img.shields.io/npm/l/@rbxts/localize)](https://github.com/LabDinos/localize/blob/main/LICENSE.md)
+
+`localize` is a runtime internationalization (i18n) and localization library for Roblox, inspired by i18next. There is no code generation and no build step: define your translations as plain data and resolve them at runtime, with CLDR-style automatic pluralization (cardinal and ordinal) built in.
+
+## Why `localize`
+
+Roblox's automatic translation renders the same string inconsistently within a single language. Translate "N players left" and Chinese can come back as "只剩一个玩家", "只剩2个玩家", then "只有3玩家": the count switches from spelled-out to digits, the phrasing drifts ("只剩" to "只有"), and the measure word ("个") vanishes. It looks unprofessional.
+
+`localize` applies CLDR plural rules per language, so counts read correctly and consistently.
 
 ## Quick Start
 
@@ -77,9 +87,7 @@ console.log(localizer.localize('apples', { $count: 2 })); // You have 2 apples
 
 ## Plurals
 
-The main idea of `@rbxts/localize` is to provide a simple way to localize your experience without
-having to worry about the complexity of pluralization rules. Simply use the `$count` token in your
-strings and `@rbxts/localize` will handle the rest.
+The main idea of `localize` is to provide a simple way to localize your experience without having to worry about the complexity of pluralization rules. Simply use the `$count` token in your strings and `localize` will handle the rest.
 
 Localization file:
 ```csv
